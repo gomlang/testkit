@@ -1,0 +1,14 @@
+package main;
+
+use ecosystem::testkit::reference;
+use std::json;
+use std::testing;
+
+fn main() -> () {
+    let left = testing::expect_ok(json::parse("{\"a\":1,\"b\":2}"), "left");
+    let right = testing::expect_ok(json::parse("{\"b\":2,\"a\":1}"), "right");
+    reference::assert_equal(left, right, "JSON objects ignore field order");
+    let screen = reference::Screen::new(8, 1);
+    testing::assert_ok(screen.feed("\u001b[31mhello\u001b[0m".to_bytes().as_slice()));
+    testing::assert_eq(screen.cell(0, 0).foreground, "i:1");
+}
