@@ -1,0 +1,21 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    uses: gomlang/workflows/.github/workflows/ecosystem-ci.yml@f657e67667b1c5ac96f10ecae4a3f65d4e0ef480
+    with:
+      module: testkit
+      workflows-ref: f657e67667b1c5ac96f10ecae4a3f65d4e0ef480
