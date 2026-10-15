@@ -16,7 +16,7 @@ let actual = reference::run_json("./_artifact/bin/my_program", expected);
 
 The package provides JSON fixture decoding and comparisons, subprocess protocol checks with explicit executable paths, and an independent terminal `Screen` model. See [the reference API notes](reference/README.md) for timeouts, compressed fixture formats, and the screen model's intentionally limited Unicode coverage. It does not discover ecosystem directory layouts or read runner environment variables.
 
-Use the current GoML source toolchain (the unversioned registry requires a newer compiler than the 0.1.59 bootstrap release):
+Use the [current GoML toolchain](https://github.com/gomlang/workflows/blob/main/ci/toolchain.json):
 
 ```sh
 goml test --timeout 300s
